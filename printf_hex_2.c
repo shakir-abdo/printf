@@ -1,12 +1,11 @@
 #include "main.h"
 
 /**
- * printf_hex - Prints a hexadecimal number.
- * @val: Arguments containing the number to print.
- *
- * Return: The number of characters printed (excluding null byte).
+ * printf_hex_2 - prints an hexgecimal number.
+ * @val: arguments.
+ * Return: counter.
  */
-int printf_hex(va_list val)
+int printf_hex_2(va_list val)
 {
 	int i;
 	int *array;
@@ -30,7 +29,7 @@ int printf_hex(va_list val)
 	for (i = counter - 1; i >= 0; i--)
 	{
 		if (array[i] > 9)
-			array[i] = array[i] + 39;
+			array[i] = array[i] + 7;
 		_putchar(array[i] + '0');
 	}
 	free(array);

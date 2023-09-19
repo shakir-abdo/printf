@@ -1,19 +1,18 @@
 #include "main.h"
-
 /**
- * _printf - selects the correct function to print based on format specifiers.
- * @format: The format string to parse.
- * Return: The length of the string.
+ * _printf - is a function that selects the correct function to print.
+ * @format: identifier to look for.
+ * Return: the length of the string.
  */
-int _printf(const char *format, ...)
+int _printf(const char * const format, ...)
 {
 	convert_match m[] = {
-		{"%%", printf_37},
 		{"%s", printf_string}, {"%c", printf_char},
-		{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
-		{"%S", printf_exclusive_string}, {"%p", printf_pointer},
+		{"%%", printf_37},
 		{"%i", printf_int}, {"%d", printf_dec}, {"%r", printf_srev},
+		{"%R", printf_rot13}, {"%b", printf_bin}, {"%u", printf_unsigned},
 		{"%o", printf_oct}, {"%x", printf_hex}, {"%X", printf_hex_2},
+		{"%S", printf_exclusive_string}, {"%p", printf_pointer}
 	};
 
 	va_list args;
@@ -23,6 +22,7 @@ int _printf(const char *format, ...)
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
+Here:
 	while (format[i] != '\0')
 	{
 		j = 13;
@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 			{
 				len += m[j].f(args);
 				i = i + 2;
-				goto end_loop;
+				goto Here;
 			}
 			j--;
 		}
@@ -40,9 +40,6 @@ int _printf(const char *format, ...)
 		len++;
 		i++;
 	}
-
-end_loop:
 	va_end(args);
 	return (len);
 }
-

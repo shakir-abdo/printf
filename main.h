@@ -14,8 +14,8 @@
  */
 typedef struct format
 {
-    char *id;
-    int (*f)();
+	char *id;
+	int (*f)();
 } convert_match;
 
 int printf_hex_aux_2(unsigned int num);
@@ -43,4 +43,3 @@ int printf_string(va_list val);
 int _putchar(char c);
 
 #endif
-
