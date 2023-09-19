@@ -14,4 +14,3 @@ int printf_char(va_list val)
 	_putchar(s);
 	return (1);
 }
-

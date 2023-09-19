@@ -45,4 +45,3 @@ end_loop:
 	va_end(args);
 	return (len);
 }
-
