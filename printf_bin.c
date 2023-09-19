@@ -22,7 +22,7 @@ int printf_bin(va_list val)
 		if (flag)
 		{
 			b = p >> (31 - i);
-			_putchar(b + '0'); // Convert to character before printing
+			_putchar(b + '0');
 			count++;
 		}
 	}
