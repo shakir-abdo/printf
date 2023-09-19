@@ -1,0 +1,89 @@
+.\" _printf(3) man page
+.TH _PRINTF 3 "September 18, 2023" "0.1" "Library Functions Manual"
+
+.SH NAME
+.B _printf
+\- custom version of the printf function
+
+.SH SYNOPSIS
+.PP
+.B #include "main.h"
+.PP
+.B int _printf(const char *FORMAT, ...);
+
+.SH DESCRIPTION
+.B _printf
+sends formatted output to stdout. The format string is a character string, beginning and ending in its initial shift state, if any. Arguments are placed using the '%' operator.
+
+.SH COMPILATION
+.PP
+To compile, use the following commands:
+.RS
+.B gcc -Wall -Werror -Wextra -pedantic -Wno-format *.c
+.B gcc -Wall -Werror -Wextra -pedantic -g -Wno-format *.c (for gdb debugging)
+.RE
+
+.SH PRINTING
+.PP
+.B int _printf(const char *FORMAT, ...);
+.PP
+FORMAT is the string that can contain specifier placeholders followed by a '%' symbol. '...' represents variadic arguments of any type.
+
+.SH EXAMPLE
+.PP
+.B Input:
+.RS
+.B _printf("Hello, this is %s from cohort %d\\n", "User", 33);
+.RE
+.PP
+.B Output:
+.RS
+Hello, this is User from cohort 33
+
+.SH RETURN VALUE
+.PP
+The return value is the number of characters printed, excluding the null terminator.
+
+.SH FLAG SPECIFIERS
+.PP
+Custom and non-custom specifier modifiers.
+
+.SH LENGTH MODIFIERS
+.PP
+Length modifiers.
+
+.SH CONVERSION SPECIFIERS
+.PP
+Current arguments handled by conversion specifiers:
+
+.IP %
+'%': % symbol is set without an argument, and conversion specification is '%%'.
+
+.IP c
+'c': Integer or char argument converted to unsigned char.
+
+.IP d, i
+'d', 'i': Int argument is converted to a signed decimal integer.
+
+.IP s
+'s': String argument. _printf handles 's' conversion specifier if the argument value is not a pointer to a literal string.
+
+.IP o, u, x, X
+'o', 'u', 'x', 'X': Unsigned int argument converted to unsigned octal (o), unsigned decimal (u), unsigned hexadecimal notation (x) for lower case, and (X) for upper case.
+
+.IP b
+'b': The unsigned int argument is converted to binary.
+
+.IP p
+'p': The pointer is printed in hexadecimal format preceded by '0x'.
+
+.IP r, R
+'r', 'R': 'r' prints the string in reverse, 'R' prints encrypted rot13.
+
+.IP S
+'S': ASCII <32 and >127 in the argument string are converted to hexadecimal preceded by '\x'.
+
+.SH AUTHORS
+.PP
+Shakir Abdo & Omina Ibrahim
+
